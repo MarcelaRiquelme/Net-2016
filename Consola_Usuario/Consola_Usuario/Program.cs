@@ -11,7 +11,7 @@ namespace Consola_Usuario
         static void Main(string[] args)
         {
 
-            Console.WriteLine("hola");
+           
 
 
 
