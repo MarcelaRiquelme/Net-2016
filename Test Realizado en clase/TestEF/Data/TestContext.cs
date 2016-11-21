@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 using Entidades;
+using System.Runtime.Remoting.Contexts;
 
 namespace Data
 {
   /// <summary>
   /// [[SINGLETON]]
   /// </summary>
-  public class TestContext : DbContext
+  public class TestContext : Context
   {
     public static TestContext DB { get; private set; }
 
