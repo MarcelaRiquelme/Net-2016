@@ -24,4 +24,3 @@ insert into Perfiles (Descripcion) values ('root')
 select * from Perfiles
 
 select * from Usuarios
-
