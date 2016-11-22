@@ -32,7 +32,7 @@ namespace Data
         private TestEFContext()
         {
             //  crear writer para log de eventos
-            _writer = File.CreateText($@"D:\Curso .Net 2016\Proyecto .Net Clase\Consola_Usuario\db\{this.GetType().Name}.log");
+            _writer = File.CreateText($@"F:\CURSO .NET\Repositorio GitHub\Consola_Usuario\db\{this.GetType().Name}.log");
             this.Database.Log = (s) => _writer.WriteLine(s);
         }
 
@@ -40,6 +40,8 @@ namespace Data
         {
             modelBuilder.Configurations.Add(new ConfiguracionUsuario());
             modelBuilder.Configurations.Add(new ConfiguracionPerfil());
+
+
         }
 
         protected override void Dispose(bool disposing)
@@ -56,14 +58,17 @@ namespace Data
         {
             this.HasKey(usr => usr.Login);
 
-            this.Property(usr => usr.LastLogin)
-              .HasColumnName("FechaUltimoLogin");
+           
 
             this.HasRequired(usr => usr.Perfil)
-              .WithMany(per => per.Usuarios)
+              .WithMany(p => p.Usuarios)
               .Map(cfg => cfg.MapKey("ID_Perfil"));
+
+
+
         }
     }
+    
 
     public class ConfiguracionPerfil : EntityTypeConfiguration<Perfil>
     {
@@ -73,8 +78,10 @@ namespace Data
 
             this.HasKey(per => per.IDPerfil);
 
-            this.Property(per => per.IDPerfil)
-              .HasColumnName("ID_Perfil");
+            this.Property(per => per.IDPerfil).HasColumnName("ID_Perfil");// se debe aclarar cuando en la base de datos tiene un nombre diferente al código en la clase. Si son iguales se evita este paso
+
+           
+            this.Property(pa => pa.Nombre).HasColumnName("Descripcion");
 
             //this.HasMany(per => per.Usuarios)
             //  .WithRequired(usr => usr.Perfil)

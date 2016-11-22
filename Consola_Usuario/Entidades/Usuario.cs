@@ -11,7 +11,7 @@ namespace Entidades
         public string Login { get; set; }
         public DateTime? FechaUltimoLogin { get; set; }
         public int? IntentosInvalidos { get; set; }
-        public Perfil Perfil { get; set; }
+        public virtual Perfil Perfil { get; set; }
 
 
 

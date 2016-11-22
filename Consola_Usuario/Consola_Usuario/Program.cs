@@ -30,30 +30,55 @@ namespace Consola_Usuario
             else
                 Console.WriteLine(" >>>>>>> ERROR: no existe la base de datos...");
 
-            Perfil p = ctx.Perfiles.FirstOrDefault();
 
-            Usuario user;
 
-            //user = new Usuario()
-            //{
-            //  Login = "root1",
-            //  Perfil = p
-            //};
+            // Perfil p = ctx.Perfiles.FirstOrDefault();
+            Usuario usr = ctx.Usuarios.Where(u => u.Login == "maria").FirstOrDefault();
+            Console.WriteLine($"{usr.Login} {usr.Perfil.Nombre}");
+            Perfil p = usr.Perfil;
+            foreach (var pp in p.Usuarios)
+                 Console.WriteLine($"{pp.Login}");
+               Console.ReadLine();
 
-            //ctx.Usuarios.Add(user);
+                //Usuario user;
 
-            //  user = ctx.Usuarios.FirstOrDefault();
+                //user = new Usuario()
+                //{
+                //  Login = "root1",
+                //  Perfil = p
+                //};
 
-            //ctx.SaveChanges();
+                //ctx.Usuarios.Add(user);
 
-            //  Console.WriteLine($"ID Perfil: {p.IDPerfil} ; Descripcion:  {p.Descripcion}");
-            //  Console.WriteLine($"{user.Login} {user.Perfil.Descripcion}");
-            Console.WriteLine($"{p.Nombre}");
-            foreach (Usuario u in p.Usuarios)
-                Console.WriteLine($"{u.Login}");
-            Console.ReadLine();
+                //  user = ctx.Usuarios.FirstOrDefault();
 
-            ctx.Dispose();
+                //ctx.SaveChanges();
+                //  Console.WriteLine($"ID Perfil: {p.IDPerfil} ; Descripcion:  {p.Descripcion}");
+                //  Console.WriteLine($"{user.Login} {user.Perfil.Descripcion}");
+                // Console.WriteLine($"{p.Nombre}");
+                //Usuario usr = ctx.Usuarios.FirstOrDefault();
+
+                //Console.WriteLine($"{usr.Login} {usr.Perfil.Nombre}");
+                // Perfil p1 = ctx.Perfiles.Where(per => per.Nombre.ToLower() == "avanzado").FirstOrDefault();
+
+                // if (p1 == null)
+
+                // {
+                //     p1 = new Perfil();
+                //     p1.Nombre = "avanzado";
+
+
+                // }
+                // p1.Nombre = "Invitado";
+                //Usuario usr = new Usuario();
+                // usr.Login = "maria2";
+                // usr.Perfil = p1;
+                // ctx.Usuarios.Add(usr);
+                // ctx.SaveChanges();
+
+                
+
+                ctx.Dispose();
         }
     }
 }
